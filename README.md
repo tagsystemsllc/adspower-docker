@@ -44,4 +44,4 @@ Tags pushed per build: `latest`, `main`, and the commit SHA.
 
 ## Contact
 
-If the image is outdated, please send an email to hello@tag-systems.net and I'll take care of it.
+If the image is outdated, please send an email to camille@tag-systems.net and I'll take care of it.
