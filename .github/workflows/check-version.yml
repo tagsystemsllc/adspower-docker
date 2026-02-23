@@ -1,0 +1,45 @@
+name: Check AdsPower version
+
+on:
+  schedule:
+    - cron: "0 8 * * *" # daily at 08:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  check-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get latest version from adspower.com
+        id: latest
+        run: |
+          LATEST=$(curl -s https://www.adspower.com/download | grep -oP 'linux-x64-global/\K[0-9]+\.[0-9]+\.[0-9]+' | head -1)
+          echo "version=$LATEST" >> "$GITHUB_OUTPUT"
+          echo "Latest version: $LATEST"
+
+      - name: Get repo version from Dockerfile
+        id: repo
+        run: |
+          REPO=$(grep -oP 'ADSPOWER_VERSION=\K[0-9]+\.[0-9]+\.[0-9]+' Dockerfile)
+          echo "version=$REPO" >> "$GITHUB_OUTPUT"
+          echo "Repo version: $REPO"
+
+      - name: Update README
+        run: |
+          LATEST="${{ steps.latest.outputs.version }}"
+          REPO="${{ steps.repo.outputs.version }}"
+
+          sed -i "s/| Latest (adspower.com) | .* |/| Latest (adspower.com) | $LATEST |/" README.md
+          sed -i "s/| This repo | .* |/| This repo | $REPO |/" README.md
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git diff --cached --quiet || git commit -m "docs: update version table" && git push

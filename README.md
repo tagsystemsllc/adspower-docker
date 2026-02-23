@@ -1,5 +1,10 @@
 # adspower-docker
 
+| | Version |
+|---|---|
+| Latest (adspower.com) | 7.12.29 |
+| This repo | 7.12.29 |
+
 This repository builds an AdsPower Docker image.
 
 ## Building
