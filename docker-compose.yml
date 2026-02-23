@@ -2,9 +2,13 @@ version: "3"
 
 services:
   adspower:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    # Tip: pin to a specific AdsPower version (e.g. :7.12.29) instead of :latest
+    # See available tags at https://github.com/tagsystemsllc/adspower-docker/pkgs/container/adspower-docker
+    image: ghcr.io/tagsystemsllc/adspower-docker:latest
+    pull_policy: always
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
     container_name: adspower
     # Use host network so that the dynamic CDP ports are accessible
     network_mode: host

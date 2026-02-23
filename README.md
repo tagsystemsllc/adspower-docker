@@ -37,6 +37,36 @@ curl http://localhost:50325/status
 # {"code":0,"msg":"success"}
 ```
 
+List browser profiles:
+
+```bash
+curl "http://localhost:50325/api/v1/user/list?page=1&page_size=10"
+```
+
+```json
+{
+  "code": 0,
+  "msg": "Success",
+  "data": {
+    "list": [
+      {
+        "name": "my-profile",
+        "serial_number": "12",
+        "remark": "iOS 15",
+        "group_name": "default",
+        "user_id": "j82xkp41",
+        "ip_country": "",
+        "user_proxy_config": { "proxy_soft": "...", "proxy_type": "socks5", "proxy_host": "..." },
+        "last_open_time": "1770593412",
+        "created_time": "1770591837"
+      }
+    ],
+    "page": 1,
+    "page_size": 10
+  }
+}
+```
+
 Connect to the VNC server at `localhost:5900` to see the desktop.
 
 ## CI-built image
