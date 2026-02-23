@@ -30,6 +30,13 @@ ADSPOWER_API_KEY=your-key-here docker compose up -d
 
 This starts AdsPower with host networking (so that the dynamic CDP ports are accessible), 2 GB of shared memory for Chrome, and auto-restart enabled.
 
+Verify that AdsPower is running:
+
+```bash
+curl http://localhost:50325/status
+# {"code":0,"msg":"success"}
+```
+
 Connect to the VNC server at `localhost:5900` to see the desktop.
 
 ## CI-built image
