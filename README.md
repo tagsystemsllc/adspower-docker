@@ -22,10 +22,10 @@ Exposed ports:
 
 ## Trying it out
 
-A `podman-compose.yml` is provided at the root of the repo:
+A `docker-compose.yml` is provided at the root of the repo:
 
 ```bash
-podman-compose up -d
+ADSPOWER_API_KEY=your-key-here docker compose up -d
 ```
 
 This starts AdsPower with host networking (so that the dynamic CDP ports are accessible), 2 GB of shared memory for Chrome, and auto-restart enabled.
