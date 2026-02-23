@@ -16,3 +16,5 @@ services:
     # Required for dbus
     privileged: true
     restart: always
+    environment:
+      - ADSPOWER_API_KEY=${ADSPOWER_API_KEY}

@@ -29,7 +29,7 @@ echo "VNC server started on port 5900"
 # Start AdsPower
 adspower_global \
     --headless=true \
-    --api-key=f9ba2f7b76829f32b15a6a7cecfee3f1223a47afe70b7c65 \
+    --api-key="${ADSPOWER_API_KEY:?ADSPOWER_API_KEY environment variable is required}" \
     --api-port=50325 &
 
 echo "AdsPower started on port 50325"
