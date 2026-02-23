@@ -5,7 +5,7 @@
 | Latest (adspower.com) | 7.12.29 |
 | This repo | 7.12.29 |
 
-This repository builds an AdsPower Docker image.
+[AdsPower](https://www.adspower.com/) Docker image.
 
 ## Building
 
@@ -41,3 +41,7 @@ ghcr.io/tagsystemsllc/adspower-docker:latest
 ```
 
 Tags pushed per build: `latest`, `main`, and the commit SHA.
+
+## Contact
+
+If the image is outdated, please send an email to hello@tag-systems.net and I'll take care of it.
