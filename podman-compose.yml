@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  adspower:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: adspower
+    # Use host network so that the dynamic CDP ports are accessible
+    network_mode: host
+    # Chrome needs larger shared memory
+    shm_size: "2gb"
+    # For GUI apps in containers
+    security_opt:
+      - seccomp=unconfined
+    # Required for dbus
+    privileged: true
+    restart: always
