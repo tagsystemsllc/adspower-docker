@@ -5,6 +5,11 @@
 | Latest (adspower.com) | 7.12.29 |
 | This repo | 7.12.29 |
 
+| [Kernels](#kernels) | Source |
+|---|---|
+| 142 | bundled in `.deb` |
+| 143 | pre-installed via `EXTRA_KERNELS` |
+
 [AdsPower](https://www.adspower.com/) Docker image.
 
 ## Building
