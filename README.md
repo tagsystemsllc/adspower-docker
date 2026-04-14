@@ -2,7 +2,7 @@
 
 | | Version |
 |---|---|
-| Latest (adspower.com) | 7.12.29 |
+| Latest (adspower.com) | 8.4.3 |
 | This repo | 7.12.29 |
 
 | [Kernels](#kernels) | Source |
