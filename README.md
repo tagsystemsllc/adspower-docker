@@ -3,12 +3,12 @@
 | | Version |
 |---|---|
 | Latest (adspower.com) | 8.6.3 |
-| This repo | 7.12.29 |
+| This repo | 8.6.3 |
 
 | [Kernels](#kernels) | Source |
 |---|---|
-| 142 | bundled in `.deb` |
-| 143 | pre-installed via `EXTRA_KERNELS` |
+| 148 | bundled in `.deb` |
+| 149 | pre-installed via `EXTRA_KERNELS` |
 
 [AdsPower](https://www.adspower.com/) Docker image.
 
@@ -22,18 +22,18 @@ The image is based on `ubuntu:25.10` and downloads the AdsPower `.deb` package f
 
 ## Kernels
 
-AdsPower uses versioned browser kernels ("SunBrowser") that map directly to Chrome major versions (e.g. kernel `143` = Chrome 143). Profiles are created with a `browser_kernel_config.version` specifying which kernel to use — but the kernel binary must already be installed.
+AdsPower uses versioned browser kernels ("SunBrowser") that map directly to Chrome major versions (e.g. kernel `149` = Chrome 149). Profiles are created with a `browser_kernel_config.version` specifying which kernel to use — but the kernel binary must already be installed.
 
-**Kernel 142** is bundled inside the `.deb` and auto-extracted to `~/.config/adspower_global/cwd_global/chrome_142/` on first start.
+**Kernel 148** is bundled inside the `.deb` and auto-extracted to `~/.config/adspower_global/cwd_global/chrome_148/` on first start.
 
-**Additional kernels** are pre-installed at image build time via the `EXTRA_KERNELS` build argument (default: `"143"`):
+**Additional kernels** are pre-installed at image build time via the `EXTRA_KERNELS` build argument (default: `"149"`):
 
 ```bash
-# Default: pre-install kernel 143 (in addition to the bundled 142)
+# Default: pre-install kernel 149 (in addition to the bundled 148)
 docker build -t adspower .
 
 # Pre-install multiple extra kernels
-docker build --build-arg EXTRA_KERNELS="143 134" -t adspower .
+docker build --build-arg EXTRA_KERNELS="149 148" -t adspower .
 
 # Skip extra kernels entirely
 docker build --build-arg EXTRA_KERNELS="" -t adspower .
@@ -47,18 +47,18 @@ AdsPower does not publish direct download URLs for kernel binaries. The URL is o
 
 ```
 GET https://api-global.adspower.net/client/browser/get-browser-version
-      ?type=chrome&kernel=143&system=linux_x64&is_self_refresh=1
+      ?type=chrome&kernel=149&system=linux_x64&is_self_refresh=1
 ```
 
 Response:
 ```json
 {
   "data": {
-    "download_url": "https://version.adspower.net/software/browsers/chrome/20251212/SunBrowser-linux-143-20251212.zip",
-    "version": "20251222",
-    "file_md5": "47A2CD05EFC8C7D59D5080DD21F08C67",
-    "kernel": "143",
-    "size": "220.08MB"
+    "download_url": "https://version.adspower.net/software/browsers/chrome/20260624/SunBrowser-linux-149-20260624.zip",
+    "version": "20260624",
+    "file_md5": "9618CA8B062202A6453033F43E8A8958",
+    "kernel": "149",
+    "size": "239.29MB"
   }
 }
 ```
@@ -127,7 +127,7 @@ The image is built automatically on each push to `main` and is available at:
 ghcr.io/tagsystemsllc/adspower-docker:latest
 ```
 
-Tags pushed per build: `latest`, `main`, and the commit SHA.
+Tags pushed per build: `latest`, `main`, the commit SHA, and the AdsPower version (e.g. `8.6.3`).
 
 ## Contact
 

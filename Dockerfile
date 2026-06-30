@@ -1,12 +1,12 @@
 FROM ubuntu:25.10
 
-ARG ADSPOWER_VERSION=7.12.29
+ARG ADSPOWER_VERSION=8.6.3
 ARG ADSPOWER_URL=https://version.adspower.net/software/linux-x64-global/${ADSPOWER_VERSION}/AdsPower-Global-${ADSPOWER_VERSION}-x64.deb
 
 # Space-separated list of additional Chrome kernel versions to pre-install at build time.
-# Kernel 142 is already bundled inside the .deb and auto-extracted on first start.
-# Add more versions as needed, e.g. "143 134"
-ARG EXTRA_KERNELS="143"
+# Kernel 148 is already bundled inside the .deb and auto-extracted on first start.
+# Add more versions as needed, e.g. "149 148"
+ARG EXTRA_KERNELS="149"
 
 # Install system dependencies, LXDE, x11vnc
 RUN apt-get update && \
@@ -51,7 +51,7 @@ RUN useradd -m -s /bin/bash dave && \
     mkdir -p /home/dave/.config
 
 # Pre-install additional browser kernels.
-# Kernel 142 ships inside the .deb and is auto-extracted by AdsPower on first start.
+# Kernel 148 ships inside the .deb and is auto-extracted by AdsPower on first start.
 # Each extra kernel (~220 MB) is fetched from AdsPower's CDN via their version API:
 #   GET https://api-global.adspower.net/client/browser/get-browser-version
 #         ?type=chrome&kernel=<N>&system=linux_x64&is_self_refresh=1
